@@ -16,7 +16,6 @@ runs:
       env:
         INPUT_USER: ${{ inputs.user }}
       run: |
-        env
         case "$INPUT_USER" in
         
           bot)
@@ -40,3 +39,6 @@ runs:
             ;;
             
         esac
+
+        printf "user.name:  " && git config user.name
+        printf "user.email: " && git config user.email
