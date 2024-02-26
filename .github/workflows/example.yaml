@@ -18,12 +18,12 @@ jobs:
           git commit -m "chore: update dummy"
           # git push
           
-      - run: |
-          printf "commit user:"
-          printf "  name:  " && git log -1 --pretty=format:'%an'
-          printf "  email: " && git log -1 --pretty=format:'%ae'
-          
-          printf "user config:"
-          printf "  name:  " && git config user.name
-          printf "  email: " && git config user.email
+      - name: Commit User
+        run: |
+          printf "user.name:  " && git log -1 --pretty=format:'%an' && echo
+          printf "user.email: " && git log -1 --pretty=format:'%ae' && echo
+      - name: Config User
+        run: |     
+          printf "user.name:  " && git config user.name && echo
+          printf "user.email: " && git config user.email && echo
       
