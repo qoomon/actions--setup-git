@@ -1,0 +1,39 @@
+name: 'Setup Git User'
+description: 'Setup git user config'
+author: 'qoomon'
+branding:
+  icon: git-commit
+  color: black
+inputs:
+  user:
+    required: true
+    default: 'bot'
+runs:
+  using: "composite"
+  steps:
+    - name: Set git user config
+      shell: bash
+      run: |
+        case "$INPUT_USER" in
+        
+          bot)
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            ;;
+            
+          actor)
+            git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
+            git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+            ;;
+
+          commit)
+            git config user.name "$(git log -n 1 --pretty=format:%an)"
+            git config user.email "$(git log -n 1 --pretty=format:%ae)"
+            ;;
+            
+          *)
+            echo "ERROR: unexpected user input '$INPUT_USER'"
+            exit 1
+            ;;
+            
+        esac
