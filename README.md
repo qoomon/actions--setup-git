@@ -10,6 +10,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: qoomon/setup-git-user@v1
+        with:
+          user: bot
 
       - runs: |
           date > dummy.txt
