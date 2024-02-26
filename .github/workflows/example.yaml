@@ -20,10 +20,10 @@ jobs:
           
       - name: Commit User
         run: |
-          printf "user.name:  " && git log -1 --pretty=format:'%an' && echo
-          printf "user.email: " && git log -1 --pretty=format:'%ae' && echo
+          echo "user.name:  $(git log -1 --pretty=format:'%an')"
+          echo "user.email: $(git log -1 --pretty=format:'%ae')"
       - name: Config User
         run: |     
-          printf "user.name:  " && git config user.name && echo
-          printf "user.email: " && git config user.email && echo
+          echo "user.name:  $(git config user.name)"
+          echo "user.email: $(git config user.email)"
       
