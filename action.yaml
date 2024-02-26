@@ -24,7 +24,7 @@ runs:
             ;;
             
           actor)
-            git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
+            git config --global user.name "${GITHUB_ACTOR}"
             git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
             ;;
 
