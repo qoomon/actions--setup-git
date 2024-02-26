@@ -13,9 +13,11 @@ runs:
   steps:
     - name: Set git user config
       shell: bash
+      env:
+        INPUT_USER: ${{ inputs.user }}
       run: |
         env
-        case "$INPUT_user" in
+        case "$INPUT_USER" in
         
           bot)
             git config --global user.name 'github-actions[bot]'
@@ -33,7 +35,7 @@ runs:
             ;;
             
           *)
-            echo "ERROR: unexpected user input '$INPUT_user'"
+            echo "ERROR: unexpected user input '$INPUT_USER'"
             exit 1
             ;;
             
