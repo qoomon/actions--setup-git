@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  example:
+    runs-on: ubuntu.latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+
+      - run: |
+          date > dummy.txt
+          git add dummy.txt
+          git commit -m "chore: update dummy"
+          # git push
+          
+      - run: |
+          printf "commit user:"
+          printf "  name:  " && git log -1 --pretty=format:'%an'
+          printf "  email: " && git log -1 --pretty=format:'%ae'
+          
+          printf "user config:"
+          printf "  name:  " && git config user.name
+          printf "  email: " && git config user.email
+      
