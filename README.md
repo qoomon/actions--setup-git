@@ -4,7 +4,6 @@ GitHub Action to setup git user config
 ### Example
 ```yaml
 jobs:
-
   basic-ubuntu-20:
     runs-on: ubuntu-latest
     steps:
