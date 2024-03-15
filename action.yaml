@@ -11,7 +11,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set git user config
+    - name: user setup
       shell: bash
       env:
         INPUT_USER: ${{ inputs.user }}
@@ -42,3 +42,9 @@ runs:
 
         printf "user.name:  " && git config user.name
         printf "user.email: " && git config user.email
+        
+    - name: push setup
+      shell: bash
+      run: |
+        git config --global push.default 'current'
+        git config --global push.autoSetupRemote true
