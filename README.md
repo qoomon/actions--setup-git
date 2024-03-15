@@ -11,7 +11,6 @@ Actual values depends on `user` input
 - `committer` - configure committer from `HEAD` commit as git user
 
 ### Push Config           
-- `git config --global push.default 'current'`
 - `git config --global push.autoSetupRemote true`
 
 ### Example
