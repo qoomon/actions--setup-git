@@ -1,4 +1,4 @@
-# setup-git-user
+# Setup GIT
 GitHub Action to setup git user config and push config
 
 ### User Config
