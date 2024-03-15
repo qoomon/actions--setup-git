@@ -29,7 +29,7 @@ runs:
             git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
             ;;
 
-          commit)
+          committer)
             git config user.name "$(git log -n 1 --format=%cn)"
             git config user.email "$(git log -n 1 --format=%ce)"
             ;;
