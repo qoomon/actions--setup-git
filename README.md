@@ -1,5 +1,17 @@
 # setup-git-user
-GitHub Action to setup git user config
+GitHub Action to setup git user config and push config
+
+### User Config
+- `git config --global user.name 'github-actions[bot]'`
+- `git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'`
+Actual values depends on user input
+- `bot` _(default)_ - configure `github-actions[bot]` as git user
+- `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
+- `commit` - configure user from `HEAD` commit as git user
+
+### Push Config           
+- `git config --global push.default 'current'`
+- `git config --global push.autoSetupRemote true`
 
 ### Example
 ```yaml
@@ -9,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: qoomon/setup-git-user@v1
+      - uses: qoomon/setup-git@v1
         with:
           user: bot
 
@@ -21,8 +33,16 @@ jobs:
 ```
 
 ### Inputs
+```yaml
+inputs:
+  user:
+    description: User to setup bot (github-actions[bot]), actor (github.actor) or commit (user from `HEAD` commit)
+    required: true
+    default: 'bot'
+```
 
-- `user` - select user to setup
-  - `bot` _(default)_ - configure `github-actions[bot]` as git user
-  - `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
-  - `commit` - configure user from `HEAD` commit as git user
+## Development
+
+### Release New Action Version
+
+Trigger [Release Version workflow](/actions/workflows/action-release.yaml)
