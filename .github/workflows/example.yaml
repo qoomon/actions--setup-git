@@ -56,7 +56,7 @@ jobs:
 
       - uses: ./
         with:
-          user: commit
+          user: committer
           
       - run: |
           date > dummy.txt
