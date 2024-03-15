@@ -6,6 +6,7 @@ branding:
   color: black
 inputs:
   user:
+    description: User to setup bot (github-actions[bot]), actor (github.actor) or commit (user from `HEAD` commit)
     required: true
     default: 'bot'
 runs:
