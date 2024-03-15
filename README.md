@@ -4,7 +4,8 @@ GitHub Action to setup git user config and push config
 ### User Config
 - `git config --global user.name 'github-actions[bot]'`
 - `git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'`
-Actual values depends on user input
+
+Actual values depends on `user` input
 - `bot` _(default)_ - configure `github-actions[bot]` as git user
 - `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
 - `commit` - configure user from `HEAD` commit as git user
