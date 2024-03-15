@@ -8,7 +8,7 @@ GitHub Action to setup git user config and push config
 Actual values depends on `user` input
 - `bot` _(default)_ - configure `github-actions[bot]` as git user
 - `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
-- `commit` - configure committer from `HEAD` commit as git user
+- `committer` - configure committer from `HEAD` commit as git user
 
 ### Push Config           
 - `git config --global push.default 'current'`
