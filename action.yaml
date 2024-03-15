@@ -1,5 +1,5 @@
-name: 'Setup Git User Config'
-description: 'Setup git user config'
+name: 'Setup Git Config'
+description: 'Setup git config'
 author: 'qoomon'
 branding:
   icon: git-commit
