@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: qoomon/setup-git@v1
+      - uses: qoomon/actions--setup-git@v1
         with:
           user: bot
 
