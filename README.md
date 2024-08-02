@@ -1,5 +1,5 @@
 # Setup GIT
-GitHub Action to setup following git configs
+This GitHub Action will automatically setup following git configs
 - User Config
   - `user.name` value depends on [`user` input field](#inputs)
   - `user.email` value depends on [`user` input field](#inputs)
