@@ -1,17 +1,11 @@
 # Setup GIT
 GitHub Action to setup git user config and push config
 
-### User Config
-- `git config --global user.name 'github-actions[bot]'`
-- `git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'`
-
-Actual values depends on `user` input
-- `bot` _(default)_ - configure `github-actions[bot]` as git user
-- `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
-- `committer` - configure committer from `HEAD` commit as git user
-
-### Push Config           
-- `git config --global push.autoSetupRemote true`
+# Inputs
+- `user` values
+  - `bot` _(default)_ - configure `github-actions[bot]` as git user (email: `41898282+github-actions[bot]@users.noreply.github.com`)
+  - `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
+  - `committer` - configure committer from `HEAD` commit as git user
 
 ### Example
 ```yaml
