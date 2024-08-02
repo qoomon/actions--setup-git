@@ -1,5 +1,10 @@
 # Setup GIT
-GitHub Action to setup git user config and push config
+GitHub Action to setup following git configs
+- User Config
+  - `user.name` value depends on [`user` input field](#inputs)
+  - `user.email` value depends on [`user` input field](#inputs)
+- **Push Config**
+  - `push.autoSetupRemote`: `true`
 
 # Inputs
 - `user` values
@@ -16,21 +21,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: qoomon/setup-git@v1
+        with:
+          user: bot
 
       - runs: |
           date > dummy.txt
           git add dummy.txt
           git commit -m "chore: update dummy"
           git push
-```
-
-### Inputs
-```yaml
-inputs:
-  user:
-    description: User to setup bot (github-actions[bot]), actor (github.actor) or commit (user from `HEAD` commit)
-    required: true
-    default: 'bot'
 ```
 
 ## Development
