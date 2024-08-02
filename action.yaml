@@ -40,7 +40,7 @@ runs:
             ;;
             
           *)
-            user_name="$( echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\1/'"
+            user_name="$( echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\1/')"
             user_email="$(echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\2/')"
             if [ -n "$user_name" ] && [ -n "$user_email" ]
             then
