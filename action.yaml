@@ -22,7 +22,6 @@ runs:
       env:
         INPUT_USER: ${{ inputs.user }}
       run: |
-        set -x
         case "$INPUT_USER" in
         
           bot)
@@ -34,7 +33,7 @@ runs:
             git config --global user.name  "${GITHUB_ACTOR}"
             git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
             ;;
-
+            
           committer)
             git config user.name  "$(git log -n 1 --format=%cn)"
             git config user.email "$(git log -n 1 --format=%ce)"
