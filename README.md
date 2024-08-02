@@ -25,7 +25,7 @@ jobs:
         with:
           user: bot
 
-      - runs: |
+      - run: |
           date > dummy.txt
           git add dummy.txt
           git commit -m "chore: update dummy"
