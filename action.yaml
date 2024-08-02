@@ -23,46 +23,47 @@ runs:
         INPUT_USER: ${{ inputs.user }}
       run: |
         # Setup User Config
+
+        user_name=
+        user_email=
         
         case "$INPUT_USER" in
-        
           bot)
-            git config --global user.name  'github-actions[bot]'
-            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            user_name='github-actions[bot]'
+            user_email='41898282+github-actions[bot]@users.noreply.github.com'
             ;;
-            
           actor)
-            git config --global user.name  "${GITHUB_ACTOR}"
-            git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+            user_name="${GITHUB_ACTOR}"
+            user_email="${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
             ;;
-            
           committer)
-            git config user.name  "$(git log -n 1 --format=%cn)"
-            git config user.email "$(git log -n 1 --format=%ce)"
+            user_name="$(git log -n 1 --format=%cn)"
+            user_email="$(git log -n 1 --format=%ce)"
             ;;
-            
           *)
-            user_name="$( echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\1/')"
+            user_name="$(echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\1/')"
             user_email="$(echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\2/')"
-            if [ -n "$user_name" ] && [ -n "$user_email" ]
-            then
-              git config user.name  "$user_name"
-              git config user.email "$user_email"
-            else
-              echo "ERROR: unexpected user input '$INPUT_USER'"
-              echo "  Valid values: bot, actor, committer or 'USER_NAME <USER_EMAIL>'"
-              exit 1
-            fi
             ;;
-            
         esac
 
-        printf "user.name:  " && git config user.name
-        printf "user.email: " && git config user.email
+        if [ -z "$user_name" ] || [ -z "$user_email" ]
+          echo "::error::Unexpected user value '$INPUT_USER'"
+          echo "::error::Valid user values are bot, actor, committer or 'USER_NAME <USER_EMAIL>'"
+          exit 1
+        fi
+
+        echo -n "user.name:  ${user_name}"
+        echo -n "user.email: ${user_email}"
+        
+        git config user.name "$user_name"
+        git config user.email "$user_email"
         
     - name: Setup Push Config
       shell: bash
       run: |
         # Setup Push Config
+
+        echo -n "push.autoSetupRemote: true"
         
         git config --global push.autoSetupRemote true
+
