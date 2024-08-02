@@ -53,8 +53,10 @@ runs:
           exit 1
         fi
 
-        git config --global user.name  "$user_name"  && echo "user.name:  ${user_name}"
-        git config --global user.email "$user_email" && echo "user.email: ${user_email}"
+        git config --global user.name  "$user_name"  \
+          && echo "user.name:  ${user_name}"
+        git config --global user.email "$user_email" \
+          && echo "user.email: ${user_email}"
         
     - name: Setup Push Config
       shell: bash
@@ -63,5 +65,6 @@ runs:
 
         push_autoSetupRemote=true
         
-        git config --global push.autoSetupRemote "$push_autoSetupRemote" && echo "push.autoSetupRemote: ${push_autoSetupRemote}"
+        git config --global push.autoSetupRemote "$push_autoSetupRemote" 
+          && echo "push.autoSetupRemote: ${push_autoSetupRemote}"
 
