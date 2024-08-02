@@ -43,15 +43,16 @@ runs:
           *)
             user_name="$( echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\1/')"
             user_email="$(echo "$INPUT_USER" | sed -E '/^(.*) *<(.*)> *$/!d;s//\2/')"
-            if [ -n "$user_name" ] && [ -n "$user_email" ]
+            
+            if [ -z "$user_name" ] || [ -z "$user_email" ]
             then
-              git config user.name  "$user_name"
-              git config user.email "$user_email"
+              echo "ERROR: unexpected user input '$INPUT_USER'"
+              echo "  Valid values: bot, actor, committer or 'USER_NAME <USER_EMAIL>'"
+              exit 1
             fi
           
-            echo "ERROR: unexpected user input '$INPUT_USER'"
-            echo "  Valid values: bot, actor, committer or 'USER_NAME <USER_EMAIL>'"
-            exit 1
+            git config user.name  "$user_name"
+            git config user.email "$user_email"
             ;;
             
         esac
