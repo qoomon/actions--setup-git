@@ -17,11 +17,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: user config
+    - name: Setup User Config
       shell: bash
       env:
         INPUT_USER: ${{ inputs.user }}
       run: |
+        # Setup User Config
+        : Setup User Config
         case "$INPUT_USER" in
         
           bot)
@@ -58,7 +60,9 @@ runs:
         printf "user.name:  " && git config user.name
         printf "user.email: " && git config user.email
         
-    - name: push config
+    - name: Setup Push Config
       shell: bash
       run: |
+        # Setup Push Config
+        : Setup Push Config
         git config --global push.autoSetupRemote true
