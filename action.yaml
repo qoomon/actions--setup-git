@@ -20,22 +20,31 @@ runs:
         case "$INPUT_USER" in
         
           bot)
-            git config --global user.name 'github-actions[bot]'
+            git config --global user.name  'github-actions[bot]'
             git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
             ;;
             
           actor)
-            git config --global user.name "${GITHUB_ACTOR}"
+            git config --global user.name  "${GITHUB_ACTOR}"
             git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
             ;;
 
           committer)
-            git config user.name "$(git log -n 1 --format=%cn)"
+            git config user.name  "$(git log -n 1 --format=%cn)"
             git config user.email "$(git log -n 1 --format=%ce)"
             ;;
             
           *)
+            user_name="$( echo "$INPUT_USER" | sed -E 's/^(.*) *<(.*)> *$|.*/\1/'"
+            user_email="$(echo "$INPUT_USER" | sed -E 's/^(.*) *<(.*)> *$|.*/\2/'"
+            if [ -n "$user_name" ] && [ -n "$user_email" ]
+            then
+              git config user.name  "$user_name"
+              git config user.email "$user_email"
+            fi
+          
             echo "ERROR: unexpected user input '$INPUT_USER'"
+            echo "  Valid values: bot, actor, committer or `USER_NAME <USER_EMAIL>`"
             exit 1
             ;;
             
