@@ -22,10 +22,7 @@ jobs:
         run: |
           echo "user.name:  $(git log -1 --pretty=format:'%an')"
           echo "user.email: $(git log -1 --pretty=format:'%ae')"
-      - name: Config User
-        run: |     
-          echo "user.name:  $(git config user.name)"
-          echo "user.email: $(git config user.email)"
+
   actor:
     runs-on: ubuntu-latest
     steps:
@@ -45,10 +42,7 @@ jobs:
         run: |
           echo "user.name:  $(git log -1 --pretty=format:'%an')"
           echo "user.email: $(git log -1 --pretty=format:'%ae')"
-      - name: Config User
-        run: |     
-          echo "user.name:  $(git config user.name)"
-          echo "user.email: $(git config user.email)"
+
   commit:
     runs-on: ubuntu-latest
     steps:
@@ -68,8 +62,24 @@ jobs:
         run: |
           echo "user.name:  $(git log -1 --pretty=format:'%an')"
           echo "user.email: $(git log -1 --pretty=format:'%ae')"
-      - name: Config User
-        run: |     
-          echo "user.name:  $(git config user.name)"
-          echo "user.email: $(git config user.email)"
+
+  explicit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        with:
+          user: John Doe <john.doe@example.com>
+          
+      - run: |
+          date > dummy.txt
+          git add dummy.txt
+          git commit -m "chore: update dummy"
+          # git push
+          
+      - name: Commit User
+        run: |
+          echo "user.name:  $(git log -1 --pretty=format:'%an')"
+          echo "user.email: $(git log -1 --pretty=format:'%ae')"
       
