@@ -65,6 +65,6 @@ runs:
 
         push_autoSetupRemote=true
         
-        git config --global push.autoSetupRemote "$push_autoSetupRemote" 
+        git config --global push.autoSetupRemote "$push_autoSetupRemote" \
           && echo "push.autoSetupRemote: ${push_autoSetupRemote}"
 
