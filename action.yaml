@@ -42,6 +42,7 @@ runs:
           *)
             user_name="$( echo "$INPUT_USER" | sed -E 's/^(.*) *<(.*)> *$|.*/\1/')"
             user_email="$(echo "$INPUT_USER" | sed -E 's/^(.*) *<(.*)> *$|.*/\2/')"
+            echo user "'$user_name' '$user_email'"
             if [ -n "$user_name" ] && [ -n "$user_email" ]
             then
               git config user.name  "$user_name"
