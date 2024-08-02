@@ -82,4 +82,15 @@ jobs:
         run: |
           echo "user.name:  $(git log -1 --pretty=format:'%an')"
           echo "user.email: $(git log -1 --pretty=format:'%ae')"
+
+  invalid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        with:
+          user: invalid
+        continue-on-error: true
+          
       
