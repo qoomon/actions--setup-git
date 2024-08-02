@@ -16,7 +16,7 @@ This GitHub Action will automatically setup following git configs to be ready fo
 ### Example
 ```yaml
 jobs:
-  basic-ubuntu-20:
+  example:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
