@@ -47,6 +47,7 @@ runs:
         esac
 
         if [ -z "$user_name" ] || [ -z "$user_email" ]
+        then
           echo "::error::Unexpected user value '$INPUT_USER'"
           echo "::error::Valid user values are bot, actor, committer or 'USER_NAME <USER_EMAIL>'"
           exit 1
