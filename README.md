@@ -7,10 +7,11 @@ This GitHub Action will automatically setup following git configs
   - `push.autoSetupRemote`: `true`
 
 # Inputs
-- `user` values
+- `user` valid values
   - `bot` _(default)_ - configure `github-actions[bot]` as git user (email: `41898282+github-actions[bot]@users.noreply.github.com`)
   - `actor` - configure [github actions context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) `github.actor` as git user
   - `committer` - configure committer from `HEAD` commit as git user
+  - `USER_NAME <USER_EMAIL>` -  configure git user explicitly
 
 ### Example
 ```yaml
