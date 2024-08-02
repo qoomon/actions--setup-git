@@ -1,5 +1,5 @@
 # Setup GIT
-This GitHub Action will automatically setup following git configs
+This GitHub Action will automatically setup following git configs to be ready for `git commit` and `git push` commands
 - User Config
   - `user.name` value depends on [`user`](#inputs)input field
   - `user.email` value depends on [`user`](#inputs) input field
