@@ -23,7 +23,7 @@ runs:
         INPUT_USER: ${{ inputs.user }}
       run: |
         # Setup User Config
-        : Setup User Config
+        
         case "$INPUT_USER" in
         
           bot)
@@ -64,5 +64,5 @@ runs:
       shell: bash
       run: |
         # Setup Push Config
-        : Setup Push Config
+        
         git config --global push.autoSetupRemote true
