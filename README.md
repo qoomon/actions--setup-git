@@ -1,8 +1,8 @@
 # Setup GIT
 This GitHub Action will automatically setup following git configs
 - User Config
-  - `user.name` value depends on [`user` input field](#inputs)
-  - `user.email` value depends on [`user` input field](#inputs)
+  - `user.name` value depends on [`user`](#inputs)input field
+  - `user.email` value depends on [`user`](#inputs) input field
 - **Push Config**
   - `push.autoSetupRemote`: `true`
 
