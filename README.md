@@ -1,4 +1,4 @@
-# Setup GIT
+# Setup Git &nbsp; [![Actions](https://img.shields.io/badge/qoomon-GitHub%20Actions-blue)](https://github.com/qoomon/actions)
 This GitHub Action will automatically setup following git configs to be ready for `git commit` and `git push` commands
 - User Config
   - `user.name` value depends on [`user`](#inputs)input field
