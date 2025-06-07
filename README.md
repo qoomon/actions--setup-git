@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: 
+          persist-credentials: false
 
       - uses: qoomon/actions--setup-git@v1
         with:
